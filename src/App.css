@@ -1,0 +1,10 @@
+#mainContainer {
+  width: 100%;
+  height: 100%;
+  background-color: #bfa004;
+}
+
+.container {
+  width: 100%;
+  height: calc(100% - 100px);
+}

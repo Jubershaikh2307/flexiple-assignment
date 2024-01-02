@@ -1,0 +1,52 @@
+.noteContainer {
+  position: absolute;
+  width: 200px;
+  height: 250px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #f2e96b;
+  border: 1px solid #bfa004;
+}
+
+.noteContainer div:first-child {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #d9cb04;
+}
+
+.noteContainer :first-child > div {
+  width: 10px;
+  height: 20px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  margin: 0px 10px 0px 10px;
+}
+
+.noteContainer :nth-child(2) {
+  width: 100%;
+  height: calc(100% - 30px);
+  overflow: hidden;
+}
+
+.textArea {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  resize: none;
+  outline: none;
+  border: none;
+  font-family: stylish;
+  font-size: 30px;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
