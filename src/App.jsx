@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { Footer } from "./Components/footer";
+import { Footer } from "./Components/Footer";
 import { Note } from "./Components/Note";
 import { useSelector } from "react-redux";
 

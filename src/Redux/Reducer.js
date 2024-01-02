@@ -7,10 +7,7 @@ import {
 } from "./ActionType";
 
 const initialState = {
-  data: [
-    { id: 1, text: "Juber", pin: false, pos: { a: "0px", b: "0px" } },
-    { id: 2, text: "dfjgdkjjfkl", pin: true, pos: { a: "10px", b: "12px" } },
-  ],
+  data: [],
 };
 
 const Reducer = (state = initialState, action) => {
