@@ -62,6 +62,13 @@ This command will start the development server, and you can access the applicati
 - Edit notes by clicking on the text. The cursor should start from the beginning.
 - Pin notes to make them non-draggable.
 
+
+## Screenshots
+
+![Logo](./src/assets/1.png)
+
+![Logo](./src/assets/2.png)
+
 ## Support
 
 For support, email jubershaikh2307@gmail.com.
