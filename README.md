@@ -39,7 +39,7 @@ Follow these steps to run the project locally:
 2. Navigate to the project directory:
 
    ```bash
-   cd your-repo
+   cd flexiple-assignment
 
 3. Install dependencies:
 
