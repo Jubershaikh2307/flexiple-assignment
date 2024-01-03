@@ -100,7 +100,7 @@ export const Note = ({ data }) => {
     <div
       className="noteContainer"
       ref={container}
-      style={{ zIndex: data.pin ? 100 : 1, position: "relative" }}
+      style={{ zIndex: data.pin ? 100 : 1 }}
     >
       <div
         id="test"
