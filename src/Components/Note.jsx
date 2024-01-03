@@ -14,7 +14,6 @@ import { useDispatch } from "react-redux";
 export const Note = ({ data }) => {
   const dispatch = useDispatch();
   const container = useRef(null);
-
   const childRef = useRef(null);
   const [isHovered, setIsHovered] = useState(data.pin);
 
@@ -35,10 +34,21 @@ export const Note = ({ data }) => {
   const handleDelete = () => dispatch(deleteNote(data.id));
 
   useEffect(() => {
-    if (container.current) {
-      dragElement(container.current);
+    const elmnt = container.current;
+
+    if (elmnt) {
+      if (!data.pin) {
+        // If note is not pinned, attach drag events
+        dragElement(elmnt);
+      } else {
+        // If note is pinned, remove drag events
+        elmnt.onmousedown = null;
+        childRef.current.onmousedown = null;
+        document.onmouseup = null;
+        document.onmousemove = null;
+      }
     }
-  }, []);
+  }, [data.pin]);
 
   function dragElement(elmnt) {
     elmnt.style.top = data.pos.a;
@@ -64,25 +74,25 @@ export const Note = ({ data }) => {
       document.onmouseup = closeDragElement;
       // call a function whenever the cursor moves:
       document.onmousemove = elementDrag;
-    }
 
-    function elementDrag(e) {
-      e = e || window.event;
-      e.preventDefault();
-      pos1 = pos3 - e.clientX;
-      pos2 = pos4 - e.clientY;
-      pos3 = e.clientX;
-      pos4 = e.clientY;
-      elmnt.style.top = elmnt.offsetTop - pos2 + "px";
-      elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
-      dispatch(
-        changePosition(data.id, { a: elmnt.style.top, b: elmnt.style.left })
-      );
-    }
+      function elementDrag(e) {
+        e = e || window.event;
+        e.preventDefault();
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        elmnt.style.top = elmnt.offsetTop - pos2 + "px";
+        elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
+        dispatch(
+          changePosition(data.id, { a: elmnt.style.top, b: elmnt.style.left })
+        );
+      }
 
-    function closeDragElement() {
-      document.onmouseup = null;
-      document.onmousemove = null;
+      function closeDragElement() {
+        document.onmouseup = null;
+        document.onmousemove = null;
+      }
     }
   }
 
@@ -90,7 +100,7 @@ export const Note = ({ data }) => {
     <div
       className="noteContainer"
       ref={container}
-      style={{ zIndex: data.pin ? 100 : 1 }}
+      style={{ zIndex: data.pin ? 100 : 1, position: "relative" }}
     >
       <div
         id="test"
